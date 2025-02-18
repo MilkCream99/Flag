@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="login-container">
         <h2>Welcome Back</h2>
         <p>Sign in to continue</p>
-        <form action="#">
+        <form method="POST">
             <div class="input-group">
                 <i class="fa fa-envelope"></i>
                 <input type="" id="username" name="username" placeholder="Email" required>
