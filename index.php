@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="#">
             <div class="input-group">
                 <i class="fa fa-envelope"></i>
-                <input type="email" id="username" name="username" placeholder="Email" required>
+                <input type="" id="username" name="username" placeholder="Email" required>
             </div>
             <div class="input-group">
                 <i class="fa fa-lock"></i>
