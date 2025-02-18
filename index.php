@@ -1,7 +1,35 @@
 <?php
 session_start();
-require 'config.php';  // Import configuration
-require 'login.php';   // Handle login logic
+
+// Dummy credentials (Replace with database authentication)
+$valid_username = "admin";
+$valid_password = "password";
+
+// Initialize login attempts if not set
+if (!isset($_SESSION['attempts'])) {
+    $_SESSION['attempts'] = 0;
+}
+
+// Lockout after 5 failed attempts
+if ($_SESSION['attempts'] >= 5) {
+    die("Too many failed attempts. Try again later.");
+}
+
+// Handle login request
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = trim($_POST["username"]);
+    $password = trim($_POST["password"]);
+
+    if ($username === $valid_username && $password === $valid_password) {
+        $_SESSION["user"] = $username; // Store session
+        $_SESSION["attempts"] = 0; // Reset attempts
+        header("Location: dashboard.php"); // Redirect to dashboard
+        exit();
+    } else {
+        $_SESSION['attempts']++; // Increase attempt count
+        $error = "Invalid username or password. Attempts: " . $_SESSION['attempts'];
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
